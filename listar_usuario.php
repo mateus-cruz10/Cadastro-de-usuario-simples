@@ -1,0 +1,39 @@
+<h1> Lista de usuario</h1>
+<?php
+    $sql= "SELECT*FROM usuarios";
+    $res= $conn->query($sql);
+    $qtd= $res->num_rows;
+    if ($qtd > 0) { 
+            print"<table class= 'table table-hover table-bordered'>";
+            print "<tr>";
+            print "<th>Id</th>";
+            print "<th>Nome</th>";
+            print "<th>E-mail</th>";
+            print "<th>Data de nascimento</th>";
+            print "<th>Ações</th>";
+             while($row = $res -> fetch_object()){
+            print "<tr>";
+            print "<td>". $row -> id."</td>";
+            print "<td>". $row -> nome."</td>";
+            print "<td>". $row -> email."</td>";
+            print "<td>". $row -> data_nasc.
+            "</td>";
+            print "<td> <button onclick=\"location.href='?page=editar&id=".$row->id."';
+             \"  class= 'btn btn-success'>Editar</button>
+
+             <button onclick=\" if (confirm('Tem certeza que deseja excluir?'))
+             {location.href='? page=salvar&acao=excluir&id=".$row->id."';}
+             else{false;}\" <button  class= 'btn btn-danger'>Excluir</button>
+                    
+            </td>";
+                    
+            
+            
+        }
+       
+        }
+        
+else { print "<p class= 'alert alert-danger'> Não encontrou resultados.</p> ";
+}
+
+?>
